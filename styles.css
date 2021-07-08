@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+}
+
+.frame {
+    width: 1200px;
+    height: 610px;
+    background-color: rgb(194, 194, 8);
+}
+
+.xMove {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    position: relative;
+    top: 155px;
+    left: 0;
+}
+
+.yMove {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    position: relative;
+    top: 0;
+    left: 45%;
+}
