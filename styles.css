@@ -3,25 +3,66 @@ body {
 }
 
 .frame {
+    display: inline-block;
     width: 1200px;
-    height: 610px;
+    width: 70%;
+    height: 600px;
     background-color: rgb(194, 194, 8);
 }
 
-.xMove {
-    width: 100px;
-    height: 100px;
+.xBox {
     background-color: black;
     position: relative;
     top: 155px;
     left: 0;
 }
 
-.yMove {
-    width: 100px;
-    height: 100px;
+.yBox {
     background-color: black;
     position: relative;
     top: 0;
     left: 45%;
+}
+
+.settings {
+    display: inline-block;
+    width: 26%;
+    height: 610px;
+}
+
+.xBox-sets {
+    width: 100%;
+}
+
+.yBox-sets {
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.color,
+.size,
+.speed {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 25px;
+}
+
+button {
+    margin-top: 10px;
+    margin-right: 20px;
+    color: white;
+    border: none;
+    width: 75px;
+}
+
+.slider {
+    width: 99%;
+    height: 25px;
+    opacity: 0.7;
+    transition: opacity .2s;
 }

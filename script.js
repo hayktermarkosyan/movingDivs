@@ -1,35 +1,100 @@
 const frame = document.querySelector('.frame');
 
-const xMove = document.querySelector('.xMove');
-const yMove = document.querySelector('.yMove');
+const xBox = document.querySelector('.xBox');
+const yBox = document.querySelector('.yBox');
 
-let xDelta = 0;
-let yDelta = 0;
-let frameWidth = 1100;
-let frameHeight = 510;
+let boxLeft = 0;
+let boxTop = 0;
+let speedRange1 = document.getElementById('speedRange1');
+let speedRange2 = document.getElementById('speedRange2');
 
-let timer = setTimeout(function move() {
-    if (xDelta < frameWidth) {
-        xDelta += 10;
-        xMove.style.left = xDelta + 'px';
-    } else if (xDelta > 0) {
-        frameWidth = 0;
-        xDelta -= 10;
-        xMove.style.left = xDelta + 'px';
+let deltaLeft = +speedRange1.value;
+let deltaTop = +speedRange2.value;
+
+speedRange1.oninput = function() {
+    deltaLeft = this.value;
+}
+
+speedRange2.oninput = function() {
+    deltaTop = this.value;
+}
+
+let widthRange1 = document.getElementById('widthRange1');
+let heightRange1 = document.getElementById('heightRange1');
+let widthRange2 = document.getElementById('widthRange2');
+let heightRange2 = document.getElementById('heightRange2');
+
+xBox.style.width = widthRange1.value + 'px';
+xBox.style.height = heightRange1.value + 'px';
+yBox.style.width = widthRange2.value + 'px';
+yBox.style.height = heightRange1.value + 'px';
+
+widthRange1.oninput = function() {
+    xBox.style.width = this.value + 'px';
+}
+
+heightRange1.oninput = function() {
+    xBox.style.height = this.value + 'px';
+}
+
+widthRange2.oninput = function() {
+    yBox.style.width = this.value + 'px';
+}
+
+heightRange2.oninput = function() {
+    yBox.style.height = this.value + 'px';
+}
+
+let frameWidth = frame.offsetWidth;
+let frameHeight = frame.offsetHeight;
+
+document.querySelectorAll('.xBox-sets .color button').forEach(function(btn) {
+    btn.addEventListener('click', () => {
+        xBox.style.backgroundColor = btn.style.backgroundColor;
+    });
+});
+
+document.querySelectorAll('.yBox-sets .color button').forEach(function(btn) {
+    btn.addEventListener('click', () => {
+        yBox.style.backgroundColor = btn.style.backgroundColor;
+    });
+});
+
+
+
+setInterval(() => {
+    boxLeft += deltaLeft
+    if (deltaLeft > 0) {
+        if (boxLeft >= frameWidth - xBox.offsetWidth) {
+            boxLeft = frameWidth - xBox.offsetWidth;
+            deltaLeft = -deltaLeft;
+        }
     } else {
-        frameWidth = 1100;
+        if (boxLeft <= 0) {
+            boxLeft = 0;
+            deltaLeft = -deltaLeft;
+        }
     }
+    xBox.style.left = boxLeft + 'px';
 
-    if (yDelta < frameHeight) {
-        yDelta += 10;
-        yMove.style.top = yDelta + 'px';
-    } else if (yDelta > 0) {
-        frameHeight = 0;
-        yDelta -= 10;
-        yMove.style.top = yDelta + 'px';
+
+    boxTop += deltaTop
+    if (deltaTop > 0) {
+        if (boxTop >= frameHeight - yBox.offsetHeight) {
+            boxTop = frameHeight - yBox.offsetHeight;
+            deltaTop = -deltaTop;
+        }
     } else {
-        frameHeight = 510;
+        if (boxTop <= 0) {
+            boxTop = 0;
+            deltaTop = -deltaTop;
+        }
     }
+    yBox.style.top = boxTop + 'px';
 
-    timer = setTimeout(move, 50);
 }, 100)
+
+
+window.addEventListener('resize', () => {
+    location = location;
+})
