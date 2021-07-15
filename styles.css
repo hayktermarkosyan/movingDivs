@@ -4,10 +4,11 @@ body {
 
 .frame {
     display: inline-block;
-    width: 1200px;
     width: 70%;
-    height: 600px;
+    height: 580px;
     background-color: rgb(194, 194, 8);
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .xBox {
@@ -48,21 +49,22 @@ h2 {
 .size,
 .speed {
     text-align: center;
-    margin-bottom: 15px;
-    margin-top: 25px;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 button {
-    margin-top: 10px;
-    margin-right: 20px;
+    margin-top: 5px;
+    margin-right: 10px;
     color: white;
     border: none;
-    width: 75px;
+    width: 120px;
+    height: 30px;
 }
 
 .slider {
-    width: 99%;
-    height: 25px;
+    width: 38%;
+    height: 2px;
     opacity: 0.7;
     transition: opacity .2s;
 }

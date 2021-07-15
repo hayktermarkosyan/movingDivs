@@ -96,5 +96,8 @@ setInterval(() => {
 
 
 window.addEventListener('resize', () => {
-    location = location;
+    // location = location;
+
+    frameWidth = frame.offsetWidth;
+    frameHeight = frame.offsetHeight;
 })
