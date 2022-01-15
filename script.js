@@ -92,7 +92,7 @@ setInterval(() => {
     }
     yBox.style.top = boxTop + 'px';
 
-}, 100)
+}, 10)
 
 
 window.addEventListener('resize', () => {
