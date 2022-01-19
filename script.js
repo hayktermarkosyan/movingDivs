@@ -11,14 +11,6 @@ let speedRange2 = document.getElementById('speedRange2');
 let deltaLeft = +speedRange1.value;
 let deltaTop = +speedRange2.value;
 
-speedRange1.oninput = function() {
-    deltaLeft = this.value;
-}
-
-speedRange2.oninput = function() {
-    deltaTop = this.value;
-}
-
 let widthRange1 = document.getElementById('widthRange1');
 let heightRange1 = document.getElementById('heightRange1');
 let widthRange2 = document.getElementById('widthRange2');
@@ -29,20 +21,33 @@ xBox.style.height = heightRange1.value + 'px';
 yBox.style.width = widthRange2.value + 'px';
 yBox.style.height = heightRange1.value + 'px';
 
+
 widthRange1.oninput = function() {
-    xBox.style.width = this.value + 'px';
+    if((xBox.offsetLeft - 10) >= (this.value - 100) / 2) {
+        xBox.style.left = (10 + (this.value - 100) / 2) + 'px';
+        xBox.style.width = this.value + 'px';
+    } else {
+        xBox.style.width = this.value + 'px';
+    }    
 }
 
+console.log(xBox.offsetLeft)
+
+// ++++++++++++++++++++++++++++++++
 heightRange1.oninput = function() {
+    xBox.style.top = (155 - (this.value - 100) / 2) + 'px';
     xBox.style.height = this.value + 'px';
 }
 
+// ++++++++++++++++++++++++++++++++
 widthRange2.oninput = function() {
+    yBox.style.left = (408 - (this.value - 100) / 2) + 'px';
     yBox.style.width = this.value + 'px';
 }
 
 heightRange2.oninput = function() {
     yBox.style.height = this.value + 'px';
+    yBox.style.top = (((yBox.offsetTop + 61) + this.value / 2) / 2) + 'px';
 }
 
 let frameWidth = frame.offsetWidth;
@@ -62,8 +67,20 @@ document.querySelectorAll('.yBox-sets .color button').forEach(function(btn) {
 
 
 
+
+speedRange1.oninput = function() {
+    deltaLeft = this.value;
+}
+
+speedRange2.oninput = function() {
+    deltaTop = this.value;
+}
+
+
+
 setInterval(() => {
     boxLeft += deltaLeft
+    console.log()
     if (deltaLeft > 0) {
         if (boxLeft >= frameWidth - xBox.offsetWidth) {
             boxLeft = frameWidth - xBox.offsetWidth;
@@ -92,12 +109,10 @@ setInterval(() => {
     }
     yBox.style.top = boxTop + 'px';
 
-}, 10)
+}, 1000)
 
 
 window.addEventListener('resize', () => {
-    // location = location;
-
     frameWidth = frame.offsetWidth;
     frameHeight = frame.offsetHeight;
 })
